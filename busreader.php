@@ -9,7 +9,7 @@ while($row = mysqli_fetch_assoc($result)){
     $buses[]=$row;
 }
 if($_POST['type']=='json'){
-		$colour=['red','green','orange'];
+        $colour=['red','green','orange','pink','purple','yellow'];
         $maparr=array();
         $i=0;
         $avlat=0;$avlng=0;
@@ -24,13 +24,13 @@ if($_POST['type']=='json'){
         }
         $avlat=$avlat/$i;
         $avlng=$avlng/$i;
-	echo json_encode($maparr);
+	echo json_encode($maparr,JSON_HEX_TAG);
 }else{?>
                 <div class="row">
                 <table class="table table-striped table-responsive">
                     <tr style="background-color: #3D3D3D;color:white;">
                         <td>SL.No</td>
-                        <td>Markers</td>
+                        <td>Marker</td>
                         <td>Vacant Seat</td>
                         <td>Exp. Time</td>
                         <td>Speed</td>
@@ -38,7 +38,7 @@ if($_POST['type']=='json'){
                         <td>Total Fare</td>
                     </tr>
                     <?php
-                    $colour=['red','green','orange'];
+                    $colour=['red','green','orange','pink','purple','yellow'];
                     foreach($buses as $bus){?>
                     <tr>
                         <td><?php echo $bus['id'];?></td>
