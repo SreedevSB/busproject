@@ -8,7 +8,7 @@ $result = mysqli_query($con,$sql);
 while($row = mysqli_fetch_assoc($result)){
     $buses[]=$row;
 }
-if($_GET['type']=='json'){
+if($_POST['type']=='json'){
 		$colour=['red','green','orange'];
         $maparr=array();
         $i=0;
@@ -26,12 +26,11 @@ if($_GET['type']=='json'){
         $avlng=$avlng/$i;
 	echo json_encode($maparr);
 }else{?>
-	<div class="col-md-8 col-md-offset-2">
                 <div class="row">
                 <table class="table table-striped table-responsive">
                     <tr style="background-color: #3D3D3D;color:white;">
                         <td>SL.No</td>
-                        <td>Marker</td>
+                        <td>Markers</td>
                         <td>Vacant Seat</td>
                         <td>Exp. Time</td>
                         <td>Speed</td>
@@ -53,6 +52,4 @@ if($_GET['type']=='json'){
                     <?php }?>
                 </table>
                 </div>
-            </div>
-<?php }
-?>
+<?php }?>

@@ -80,7 +80,7 @@
                     $buses[]=$row;
             }?>
             <div class="col-md-8 col-md-offset-2"><div class="row"><span class="heading">List of Buses</span></div></div>
-            <div class="col-md-8 col-md-offset-2">
+            <div  id="maptable" class="col-md-8 col-md-offset-2">
                 <div class="row">
                 <table class="table table-striped table-responsive">
                     <tr style="background-color: #3D3D3D;color:white;">
@@ -109,6 +109,22 @@
                 </div>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+        $(function() {
+            getMapTable = function() {
+            $.post('busreader.php', {type:'hi'}, function(data)
+            { 
+                $('#maptable').html(data);
+                setTimeout(function() {
+                            getMapTable();
+                 }, 2000);
+            });
+            }
+            getMapTable();
+            }
+        );
+        </script>
         <?php $colour=['red','green','orange'];
         $maparr=array();
         $i=0;
@@ -124,9 +140,10 @@
         }
         $avlat=$avlat/$i;
         $avlng=$avlng/$i;
+        
         $map_json=json_encode($maparr,JSON_HEX_TAG);
         //print_r($map_json);?>
-    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsaLEUOaPgik36fDLVG9QY7dsY_AOVetw"></script>
+    	<script src="https://maps.googleapis.com/maps/api/jss?key=AIzaSyDsaLEUOaPgik36fDLVG9QY7dsY_AOVetw"></script>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2"><div class="row"><span class="heading">Live Tracking</span></div></div>
                 <div class="col-md-8 col-md-offset-2 mapbox" style="background-color:white;padding:2px;height:400px;">
@@ -167,7 +184,6 @@
    		add_marker(locations[i][1],locations[i][2],locations[i][3],locations[i][0]);
    	}
   </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	</body>
 </html>
