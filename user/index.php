@@ -202,7 +202,7 @@
                             setTimeout('moveMarker()',1000);
                       },
                       error: function() {
-                        alert('Error loading map');
+                        //alert('Error loading map');
                       }
                     });
 
