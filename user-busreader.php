@@ -35,7 +35,6 @@ if($_POST['type']=='json'){
                         <td>Trip Time</td>
                         <td>Speed</td>
                         <td>Place</td>
-                        <td>Total Fare</td>
                     </tr>
                     <?php
                     $colour=['red','green','orange','pink','purple','yellow'];
@@ -47,7 +46,6 @@ if($_POST['type']=='json'){
                         <td><?php echo $bus['exptime'];?> hours</td>
                         <td><?php echo $bus['speed'];?> kmph</td>
                         <td><?php echo $bus['place'];?></td>
-                        <td>Rs. <?php echo $bus['Totalfare'];?></td>
                     </tr>
                     <?php }?>
                 </table>

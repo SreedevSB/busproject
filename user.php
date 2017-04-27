@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	   <title>Depot Manager</title>        
+	   <title>User Dashboard</title>        
        <meta name="viewport"content="width=device-width,height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,user-scalable=0">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -66,13 +66,7 @@
     </head>
     <body style="background-color: #F1F4F5">
     <div class="container-fluid">
-        <div class="row" style="background-color:#3989b1">
-            <div class="container">
-                <div class="col-md-5" style="padding:20px 0px;"><div class="imgblock" style="padding:15px 15px 15px 15px;float:right;background-color:white;border-radius:150px"><img src="bus-pendrop.png" style= "width:70px;height:80px;"></div></div>
-                <div class="col-md-7 titlebar" style="margin-top:50px";><span class="title" >DEPOT MANAGER</span></div>
-            </div>
-        </div>
-        <div class="row">
+        <div class="row" style="margin-top:40px">
             <?php $con = mysqli_connect("127.0.0.1", "root", "", "test");
                 $sql = "SELECT * FROM busproject";
 
@@ -91,7 +85,6 @@
                         <td>Trip Time</td>
                         <td>Speed</td>
                         <td>Place</td>
-                        <td>Total Fare</td>
                     </tr>
                     <?php
                     $colour=['red','green','orange','pink','purple','yellow'];
@@ -103,7 +96,6 @@
                         <td><?php echo $bus['exptime'];?> hours</td>
                         <td><?php echo $bus['speed'];?> kmph</td>
                         <td><?php echo $bus['place'];?></td>
-                        <td>Rs. <?php echo $bus['Totalfare'];?></td>
                     </tr>
                     <?php }?>
                 </table>
@@ -114,7 +106,7 @@
         <script>
         $(function() {
             getMapTable = function() {
-            $.post('busreader.php', {type:'hi'}, function(data)
+            $.post('user-busreader.php', {type:'hi'}, function(data)
             { 
                 $('#maptable').html(data);
                 setTimeout(function() {
